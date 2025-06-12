@@ -1,0 +1,36 @@
+<!-- Main Banner Component -->
+<section class="relative w-11/12 max-w-8xl mx-auto my-4 rounded-xl overflow-hidden shadow-lg border border-gray-700">
+  <app-banner 
+    [bannerTitle]="(bannerDetail | async)?.title!"
+    [bannerOverview]="(bannerDetail | async)?.overview!"
+    [key]="(bannerVideo | async)?.[0]?.key">
+  </app-banner>
+</section>
+
+<!-- Movie Categories -->
+<div class="w-11/12 max-w-8xl mx-auto space-y-8">
+  <!-- Trending Movies Section -->
+  <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-4">
+    <app-movie-carousel [title]="'Trending Movies'" [movies]="trendingMovies"></app-movie-carousel>
+  </section>
+
+  <!-- Popular Movies Section -->
+  <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-4">
+    <app-movie-carousel [title]="'Popular Movies'" [movies]="popularMovies"></app-movie-carousel>
+  </section>
+
+  <!-- Upcoming Movies Section -->
+  <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-4">
+    <app-movie-carousel [title]="'Upcoming Movies'" [movies]="upcomingMovies"></app-movie-carousel>
+  </section>
+
+  <!-- Now Playing Section -->
+  <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-4">
+    <app-movie-carousel [title]="'Now Playing'" [movies]="nowPlayingMovies"></app-movie-carousel>
+  </section>
+
+  <!-- Top Rated Section -->
+  <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-4">
+    <app-movie-carousel [title]="'Top Rated'" [movies]="topRatedMovies"></app-movie-carousel>
+  </section>
+</div>

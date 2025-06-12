@@ -1,0 +1,116 @@
+<!-- Banner Section -->
+<section class="relative w-11/12 max-w-8xl mx-auto mt-4 rounded-xl overflow-hidden shadow-lg border border-gray-700">
+  <!-- Check if movie and trailerKey are available before rendering the banner -->
+  @if (movie && trailerKey) {
+    <app-banner 
+      [bannerTitle]="movie.title" 
+      [bannerOverview]="movie.overview"
+      [key]="trailerKey">
+    </app-banner>
+  }
+</section>
+
+<!-- Movie Details Section -->
+<div class="w-11/12 max-w-8xl mx-auto my-8">
+  <!-- Loading Indicator -->
+  @if (!movie.id) {
+    <!-- Display loading animation if movie data is not available -->
+    <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-8 flex justify-center items-center h-64">
+      <div class="flex flex-col items-center">
+        <div class="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-xl text-neutral-200">Loading movie details...</p>
+      </div>
+    </div>
+  }
+  
+  <!-- Main Info Section -->
+  @if (movie.id) {
+    <!-- Render movie details if movie.id is available -->
+    <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-6 md:p-8 mb-8">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Movie Poster -->
+        <div class="w-full md:w-1/3 lg:w-1/4">
+          <div class="rounded-lg overflow-hidden shadow-lg border border-gray-700 hover:border-red-500 transition-colors duration-300 transform hover:scale-105 transition-transform duration-300">
+            <img 
+              [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : '/assets/images/placeholder-poster.jpg'" 
+              [alt]="movie.title"
+              class="w-full h-auto">
+          </div>
+        </div>
+        
+        <!-- Movie Info -->
+        <div class="w-full md:w-2/3 lg:w-3/4">
+          <!-- Movie Title -->
+          <h1 class="text-3xl md:text-4xl font-bold mb-2 text-neutral-200">{{ movie.title }}</h1>
+          
+          <!-- Movie Details: Release Date, Runtime, Rating -->
+          <div class="flex items-center text-sm text-gray-400 mb-4 flex-wrap gap-2">
+            @if (movie.release_date) {
+              <span>{{ getYear(movie.release_date) }}</span>
+            }
+            @if (movie.release_date && movie.runtime) {
+              <span class="mx-2">•</span>
+            }
+            @if (movie.runtime) {
+              <span>{{ formatRuntime(movie.runtime) }}</span>
+            }
+            @if (movie.vote_average) {
+              <span class="mx-2">•</span>
+              <span class="bg-red-500 text-white px-2 py-1 rounded-md">{{ movie.vote_average.toFixed(1) }}</span>
+            }
+          </div>
+          
+          <!-- Movie Genres -->
+          @if (movie.genres.length) {
+            <div class="mb-6 flex flex-wrap gap-2">
+              @for (genre of movie.genres; track genre.id) {
+                <span class="bg-gray-800 text-sm text-neutral-200 px-3 py-1 rounded-full border border-gray-700 hover:border-red-500 hover:bg-gray-700 transition-colors duration-300">
+                  {{ genre.name }}
+                </span>
+              }
+            </div>
+          }
+          
+          <!-- Movie Tagline -->
+          @if (movie.tagline) {
+            <div class="mb-4 italic text-gray-400 border-l-4 border-red-500 pl-4">
+              "{{ movie.tagline }}"
+            </div>
+          }
+          
+          <!-- Movie Overview -->
+          @if (movie.overview) {
+            <div class="mb-8">
+              <h2 class="text-xl font-semibold mb-3 text-neutral-200 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-10 after:bg-red-500">
+                Overview
+              </h2>
+              <p class="text-neutral-300 leading-relaxed">{{ movie.overview }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+    
+    <!-- Cast Carousel Section -->
+    @if (castMembers.length > 0) {
+      <!-- Render cast carousel if there are cast members -->
+      <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-6 mb-8 overflow-hidden">
+        <app-cast-carousel 
+          [title]="'Cast'" 
+          [cast]="castMembers">
+        </app-cast-carousel>
+      </section>
+    }
+    
+    <!-- Similar Movies Section -->
+    @if (similarMovies.length > 0) {
+      <!-- Render similar movie carousel if there are similar movies -->
+      <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl shadow-md border border-gray-700 p-6">
+        <app-movie-carousel 
+          [title]="'More Like This'" 
+          [movies]="similarMovies">
+        </app-movie-carousel>
+      </section>
+    }
+  }
+</div>

@@ -1,0 +1,30 @@
+<div class="relative w-full h-screen overflow-hidden bg-black">
+  <!-- Animated gradient overlay -->
+  <div class="absolute w-full h-full bg-gradient-to-t from-black via-black/60 to-transparent z-10 animate-pulse"></div>
+  
+  <!-- Background image with dark overlay -->
+  <div class="absolute w-full h-full overflow-hidden opacity-60">
+    <img src="/images/bannerlLgin.png" alt="Netflix background" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/20"></div>
+  </div>
+  
+  <!-- Netflix logo -->
+  <div class="absolute top-6 left-8 z-20 transform transition-all duration-300 hover:scale-105">
+    <svg class="w-40 h-12 text-red-600 fill-current" viewBox="0 0 111 30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M105.062..."></path>
+    </svg>
+  </div>
+  
+  <!-- Login form container -->
+  <div class="absolute inset-0 flex items-center justify-center z-20">
+    <div class="w-full max-w-md px-8 py-12 bg-black/85 backdrop-blur-sm text-white rounded-lg shadow-2xl border border-gray-800 transform transition-all duration-500 hover:shadow-red-600/30 mx-4 flex flex-col items-center">
+      <h1 class="font-bold text-4xl py-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-600">Sign In</h1>
+      <p class="text-gray-400 mb-6">Continue with your Google account</p>
+      
+      <!-- Google sign-in button -->
+      <div class="flex justify-center w-full mb-6">
+        <asl-google-signin-button type='standard' size='large' shape="pill" theme="filled_black"></asl-google-signin-button>
+      </div>
+    </div>
+  </div>
+</div>

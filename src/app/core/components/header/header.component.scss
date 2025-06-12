@@ -1,0 +1,170 @@
+header {
+  // Applying shadow and backdrop blur for a sleek look
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  
+  // Hover effect for the header - subtle shadow and slight movement
+  &:hover {
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  // Gradient border effect for the header
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(90deg, 
+      rgba(229, 9, 20, 0.7), 
+      rgba(171, 71, 188, 0.7), 
+      rgba(3, 169, 244, 0.7), 
+      rgba(229, 9, 20, 0.7));
+    background-size: 300% 100%;
+    animation: gradientBorder 8s linear infinite;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+// Netflix logo animation
+img[alt="netflix-logo"] {
+  filter: drop-shadow(0 0 4px rgba(229, 9, 20, 0.5)); // Adding shadow to the logo
+  transition: all 0.3s ease;
+  
+  // Logo hover effect: increases shadow and scales the logo
+  &:hover {
+    filter: drop-shadow(0 0 8px rgba(229, 9, 20, 0.8));
+    transform: scale(1.05);
+  }
+}
+
+// Hover effects for navigation links
+a[routerLink] {
+  position: relative;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  
+  // Underline effect for links on hover
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgb(229, 9, 20);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  // Activate underline animation on hover
+  &:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+// Profile image animations for hover interaction
+img[alt="Profile"] {
+  transition: all 0.3s ease;
+  
+  // Profile image hover effect: scales the image and adds shadow
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+  }
+}
+
+// Side navigation refinements
+.translate-x-0 {
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5); // Adding shadow for visible side nav
+  
+  // Staggered animation for menu items when the side nav is open
+  li {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInRight 0.3s ease forwards;
+    
+    // Delay for each menu item to animate in a staggered fashion
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.05}s;
+      }
+    }
+  }
+}
+
+// Active state for side nav links - highlighted with a box shadow
+.bg-red-500 {
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+}
+
+// Custom scrollbar styling for side navigation
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 32, 44, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #e50914, #b20710);
+  border-radius: 5px;
+}
+
+// Dropdown menu refinements: smooth entrance and exit animations
+[class*="opacity-0"] {
+  transform: translateY(-10px);
+}
+
+[class*="opacity-100"] {
+  transform: translateY(0);
+}
+
+// Overlay backdrop with blur effect for menu
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+// Animations
+@keyframes gradientBorder {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 300% 0%; }
+}
+
+// Side navigation sliding effect animation
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Responsive adjustments for smaller screens (mobile devices)
+@media (max-width: 767px) {
+  header::before {
+    animation: none;
+    background: linear-gradient(90deg, rgba(229, 9, 20, 0.7), rgba(171, 71, 188, 0.7));
+  }
+}
+
+// Dark mode adjustments
+@media (prefers-color-scheme: dark) {
+  header {
+    &::before {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Custom transition effect for menu transform
+.transform.transition-transform {
+  will-change: transform;
+}

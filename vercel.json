@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "node build.js && ng build --configuration production",
+  "outputDirectory": "dist/movie-app",
+  "installCommand": "npm install",
+  "framework": "angular",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "build": {
+    "env": {
+      "TMDB_READ_ACCESS_TOKEN": "@tmdb_read_access_token",
+      "TMDB_API_KEY": "@tmdb_api_key",
+      "GOOGLE_CLIENT_ID": "@google_client_id", 
+      "GOOGLE_CLIENT_SECRET": "@google_client_secret",
+      "AUTH_TOKEN_KEY": "@auth_token_key"
+    }
+  }
+}

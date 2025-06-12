@@ -1,0 +1,77 @@
+.movie-carousel-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    padding-bottom: 40px; // Space for pagination
+  }
+  
+  .swiper-slide {
+    height: auto;
+    transition: transform 0.3s;
+    
+    // Make slides responsive
+    width: 200px;
+    
+    @media (min-width: 480px) {
+      width: 220px;
+    }
+    
+    @media (min-width: 768px) {
+      width: 240px;
+    }
+    
+    @media (min-width: 1024px) {
+      width: 260px;
+    }
+  }
+  
+  .movie-card {
+    height: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  // Custom navigation buttons
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    &:after {
+      font-size: 18px;
+    }
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+  
+  // Custom pagination
+  .swiper-pagination-bullet {
+    background-color: white;
+    opacity: 0.5;
+    
+    &-active {
+      opacity: 1;
+    }
+  }
+  
+  // Hide navigation on small screens
+  @media (max-width: 640px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
+    }
+  }

@@ -1,0 +1,62 @@
+// Main browse component styles
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #141414;
+  color: #e5e5e5;
+  padding-bottom: 2rem;
+}
+
+// Movie category section styles
+section {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+// Custom styles for movie carousels
+::ng-deep {
+  app-movie-carousel {
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #e5e5e5;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        height: 2px;
+        width: 40px;
+        background-color: #e50914;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    .movie-card {
+      border-radius: 0.5rem;
+      overflow: hidden;
+      border: 1px solid #374151;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        border-color: #e50914;
+      }
+    }
+  }
+}

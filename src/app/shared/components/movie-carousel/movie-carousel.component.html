@@ -1,0 +1,50 @@
+<div class="movie-carousel-container px-4 md:px-10 lg:px-20 mt-8 mb-12">
+  <!-- Title Section -->
+  <h2 class="font-semibold text-2xl my-3 ml-3 text-white">{{ title }}</h2>
+
+  <!-- Swiper Container -->
+  <div class="relative">
+    <div #swiperContainer class="swiper-container">
+      <div class="swiper-wrapper">
+        <!-- Movie Items -->
+        @for (movie of movies; track movie.id) {
+          <div class="swiper-slide">
+            <div class="movie-card relative rounded-lg overflow-hidden group cursor-pointer" (click)="navigateToMovieDetail(movie.id)">
+              <!-- Movie Poster -->
+              <img [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path"
+                [alt]="movie.title"
+                class="w-full h-auto transition-transform duration-300 group-hover:scale-105">
+
+              <!-- Hover Overlay -->
+              <div
+                class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
+                <div>
+                  <h3 class="font-bold text-base text-white">{{ movie.title }}</h3>
+                  <p class="text-xs text-gray-300 my-3 line-clamp-3">
+                    {{ movie.overview }}
+                  </p>
+                </div>
+
+                <div class="flex justify-between items-center">
+                  <span class="text-green-500 text-sm font-medium">Vote Average: {{ movie.vote_average }}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      
+      <!-- Navigation Buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
