@@ -89,7 +89,3 @@ src/
 - **TMDB API** - Gets all the movie info
 - **Google OAuth** - Easy login
 - **Swiper** - Smooth sliding animations
-
----
-
-*Happy coding! 🎉*
