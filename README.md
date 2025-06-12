@@ -1,5 +1,7 @@
 # 🎬 Movie App - <code>Vibe Coding</code>
 
+[🌐 View Live Demo](https://tic-tac-toe-mu-azure-78.vercel.app/)
+
 A simple and modern Angular movie app using TMDB API with Google login.
 
 ## ✨ What's Inside
