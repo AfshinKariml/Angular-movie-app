@@ -1,65 +1,95 @@
-🎬 Movie App
-A modern Angular movie application powered by TMDB API with Google Authentication.
-✨ Features
+# 🎬 Movie App - <code>Vibe Coding</code>
 
-🎥 Browse popular movies and TV shows
-🔍 Search movies and actors
-📱 Responsive design with Tailwind CSS
-🔐 Google OAuth authentication
-🎨 Beautiful UI with Swiper integration
+A simple and modern Angular movie app using TMDB API with Google login.
 
-🚀 Quick Start
-Prerequisites
+## ✨ What's Inside
 
-Node.js 18+
-Angular CLI
-TMDB API account
-Google OAuth credentials
+- 🎥 Browse popular <strong>movies</strong> and <strong>TV shows</strong>
+- 🔍 Search for <em>movies</em> and <em>actors</em>
+- 📱 Works great on <mark>phones and computers</mark>
+- 🔐 Login with your <strong>Google account</strong>
+- 🎨 Beautiful design with <em>smooth animations</em>
 
-Installation
+## 🚀 Getting Started
 
-Clone the repository
-bashgit clone <your-repo-url>
+### What You Need First
+
+- <code>Node.js</code> (version 18 or newer)
+- <code>Angular CLI</code>
+- <strong>TMDB API account</strong> (free)
+- <em>Google OAuth setup</em>
+
+### Setup Steps
+
+**1. Download the code**
+```bash
+git clone <your-repo-url>
 cd movie-app
+```
 
-Install dependencies
-bashnpm install
+**2. Install everything**
+```bash
+npm install
+```
 
-Set up environment variables
-Copy the example environment file:
-bashcp src/environments/environment.example.ts src/environments/environment.development.ts
-Update with your credentials:
+**3. Add your API keys**
 
-Get TMDB API key from TMDB
-Get Google OAuth credentials from Google Console
+Copy the example file:
+```bash
+cp src/environments/environment.example.ts src/environments/environment.development.ts
+```
 
+Get your keys:
+- <strong>TMDB API key</strong>: Go to [TMDB](https://www.themoviedb.org/) and create account
+- <strong>Google OAuth</strong>: Set up at [Google Console](https://console.developers.google.com/)
 
-Start development server
-bashnpm start
+**4. Start the app**
+```bash
+npm start
+```
 
-Open your browser
-Navigate to http://localhost:4200
+**5. Open in browser**
+Go to `http://localhost:4200`
 
-🔧 Environment Variables
-VariableDescriptionRequiredTMDB_READ_ACCESS_TOKENTMDB API Read Access Token✅TMDB_API_KEYTMDB API Key✅GOOGLE_CLIENT_IDGoogle OAuth Client ID✅GOOGLE_CLIENT_SECRETGoogle OAuth Client Secret✅AUTH_TOKEN_KEYLocal storage key for auth⚪
-🌐 Deployment
-Vercel Deployment
+## 🔧 API Keys Setup
 
-Connect your repository to Vercel
-Add environment variables in Vercel dashboard
-Deploy automatically on push
+| Key | What it's for | Required |
+|-----|---------------|----------|
+| `TMDB_READ_ACCESS_TOKEN` | Get <strong>movie data</strong> | ✅ Yes |
+| `TMDB_API_KEY` | <em>TMDB API access</em> | ✅ Yes |
+| `GOOGLE_CLIENT_ID` | <strong>Google login</strong> | ✅ Yes |
+| `GOOGLE_CLIENT_SECRET` | <em>Google auth</em> | ✅ Yes |
+| `AUTH_TOKEN_KEY` | Store <mark>login info</mark> | ⚪ Optional |
 
-Manual Build
-bashnpm run build:prod
-📁 Project Structure
+## 🌐 Put It Online
+
+### Easy way with Vercel
+1. Connect your GitHub to Vercel
+2. Add your API keys in Vercel settings
+3. It will go live automatically when you push code
+
+### Build it yourself
+```bash
+npm run build:prod
+```
+
+## 📁 How It's Organized
+
+```
 src/
-├── app/           # Angular components and services
-├── assets/        # Static assets
-└── environments/  # Environment configurations
-🛠️ Built With
+├── app/           # All the Angular code
+├── assets/        # Images and files
+└── environments/  # API keys and settings
+```
 
-Angular 19 - Frontend framework
-Tailwind CSS - Styling
-TMDB API - Movie data
-Google OAuth - Authentication
-Swiper - Touch slider
+## 🛠️ Made With
+
+- **Angular 19** - The main framework
+- **Tailwind CSS** - Makes it look good
+- **TMDB API** - Gets all the movie info
+- **Google OAuth** - Easy login
+- **Swiper** - Smooth sliding animations
+
+---
+
+*Happy coding! 🎉*
