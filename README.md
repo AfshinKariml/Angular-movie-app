@@ -25,7 +25,7 @@ A simple and modern Angular movie app using TMDB API with Google login.
 
 **1. Download the code**
 ```bash
-git clone https://github.com/AfshinKariml/Angular-movie-app
+git clone https://github.com/AfshinKariml/Angular-movie-app.git
 cd movie-app
 ```
 
